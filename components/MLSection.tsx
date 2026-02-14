@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Brain, Gauge, ScanSearch } from "lucide-react";
+import { Brain, Gauge, ScanSearch, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import SectionWrapper from "./SectionWrapper";
 
 /* ---- FaceMesh Panel ---- */
@@ -287,6 +288,21 @@ export default function MLSection() {
         <EmotionPanel expanded={expanded === 1} onToggle={() => setExpanded(expanded === 1 ? null : 1)} />
         <DeepfakePanel expanded={expanded === 2} onToggle={() => setExpanded(expanded === 2 ? null : 2)} />
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex justify-center mt-10"
+      >
+        <Link
+          href="/ml"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-accent/30 text-sm text-accent hover:bg-accent/10 hover:border-accent/50 transition-all duration-200"
+        >
+          Deep Dive into ML Pipeline
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </motion.div>
     </SectionWrapper>
   );
 }
