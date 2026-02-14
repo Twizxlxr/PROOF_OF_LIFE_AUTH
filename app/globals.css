@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #F5F0EB;
+  background: #1E2340;
+  font-family: 'DM Sans', var(--font-dm-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1E2340;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3A4170;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(233, 127, 74, 0.3);
+}
+
+::selection {
+  background: rgba(233, 127, 74, 0.25);
+  color: #F5F0EB;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #E97F4A 0%, #607B8F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #E97F4A 0%, #F7E396 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, #E97F4A, transparent);
+  }
+
+  .card-surface {
+    background: linear-gradient(145deg, rgba(37, 43, 74, 0.8), rgba(30, 35, 64, 0.6));
+    border: 1px solid rgba(58, 65, 112, 0.6);
+    backdrop-filter: blur(12px);
+  }
+
+  .slide-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 1.5rem;
+  }
+
+  .slide-snap-target {
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 768px) {
+    .slide-section {
+      padding: 6rem 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .slide-section {
+      padding: 6rem 6rem;
+    }
+  }
+}
+
+/* ---- Presentation mode ---- */
+.presentation-mode {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.presentation-mode .slide-snap-target {
+  scroll-snap-align: start;
+  min-height: 100vh;
+}
+
+/* Hide scrollbar in presentation mode */
+.presentation-mode::-webkit-scrollbar {
+  display: none;
+}
+.presentation-mode {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
