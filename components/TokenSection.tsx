@@ -26,7 +26,11 @@ const SIGNATURE_STUB = "dGhpcyBpcyBhIHNpZ25hdHVyZSBzdHViIGZvciB2aXN1YWxpemF0aW9u
 
 function b64(obj: object | string) {
   if (typeof obj === "string") return obj;
-  return btoa(JSON.stringify(obj)).replace(/=/g, "");
+  const json = JSON.stringify(obj);
+  if (typeof btoa === "function") {
+    return btoa(json).replace(/=/g, "");
+  }
+  return Buffer.from(json).toString("base64").replace(/=/g, "");
 }
 
 function ColoredToken({ showDecoded }: { showDecoded: boolean }) {

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  Code2,
   TestTube2,
   ShieldCheck,
   Rocket,
